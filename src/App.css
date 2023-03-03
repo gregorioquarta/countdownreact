@@ -1,38 +1,171 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+body #body {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  background-color: #c70039;
+  position: relative;
+  height: 100vh;
+}
+
+body #body.final {
+  background-color: #ffffff;
+  transition: 0.5s;
+}
+#countdown {
   color: white;
+  font-size: 8rem;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: pulse 2s ease-in-out infinite;
+  z-index: 1;
 }
 
-.App-link {
-  color: #61dafb;
+body #body.final #countdown {
+  color: red;
+  transition: 0.5s;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@keyframes pulse {
+  0% {
+    transform: scale(1);
   }
-  to {
-    transform: rotate(360deg);
+  50% {
+    transform: scale(1.05);
   }
+  100% {
+    transform: scale(1);
+  }
+}
+.circle {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  animation: expand 4s ease-in-out infinite;
+  z-index: 0;
+  opacity: 0.2;
+  animation-fill-mode: forwards;
+}
+.circle:nth-of-type(1) {
+  top: 10%;
+  left: 10%;
+  animation-delay: 0s;
+  border: 2px solid white;
+}
+.circle:nth-of-type(2) {
+  top: 70%;
+  right: 30%;
+  animation-delay: 1s;
+  border: 2px solid white;
+}
+.circle:nth-of-type(3) {
+  top: 30%;
+  left: 78%;
+  animation-delay: 2s;
+  border: 2px solid white;
+}
+.circle:nth-of-type(4) {
+  top: 90%;
+  left: 70%;
+  animation-delay: 3s;
+  border: 2px solid white;
+}
+.circle:nth-of-type(5) {
+  bottom: 30%;
+  right: 90%;
+  animation-delay: 4s;
+  border: 2px solid white;
+}
+.circle:nth-of-type(6) {
+  bottom: 15%;
+  right: 45%;
+  animation-delay: 5s;
+  border: 5px solid white;
+}
+/* additional circles can be added using the same pattern */
+@keyframes expand {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(8);
+  }
+}
+#reset {
+  position: absolute;
+  background-color: transparent;
+  border-radius: 5px;
+  border: 2px solid grey;
+  color: grey;
+  cursor: pointer;
+  font-size: 0.5em;
+  padding: 10px 20px;
+  z-index: 2;
+  bottom: 2%;
+  left: 2%;
+}
+#mon-bouton {
+  z-index: 3;
+  cursor: pointer;
+}
+#mon-bouton:disabled {
+  cursor: not-allowed;
+}
+#mon-bouton,
+.timesetup {
+  width: 300px;
+  /* position: absolute; */
+  background-color: transparent;
+  border-radius: 5px;
+  border: 2px solid white;
+  color: white;
+  font-size: 3em;
+  padding: 10px 20px;
+  z-index: 2;
+  /* top: 50%;
+  left: 50%; 
+  transform: translateX(-50%);*/
+}
+#mon-bouton.hide {
+  display: none;
+}
+
+.button_container {
+  z-index: 2;
+
+  position: absolute;
+  /*top: 50%;
+  left: 50%; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1em;
+  transform: translateY(100px);
+}
+
+.button_container div {
+  gap: 1em;
+  display: flex;
+  transform: translateY(-95px);
+  transition: 1s;
+  opacity: 0;
+}
+.button_container div button {
+  cursor: pointer;
+}
+.button_container div.show {
+  gap: 1em;
+  display: flex;
+  transform: translateY(0px);
+  transition: 1s;
+  opacity: 1;
+}
+
+.button_container div button.hide {
+  display: none;
 }
